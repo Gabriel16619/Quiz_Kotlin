@@ -1,12 +1,14 @@
-package com.example.quiz.telaInicial
+package com.example.quiz
 
-
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -19,10 +21,10 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.quiz.R
 
 
 @Composable
@@ -31,52 +33,60 @@ fun telaInicio(modifier: Modifier) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(77, 206, 255, 234)),
-        verticalArrangement = Alignment.CenterVertically as Arrangement.Vertical
+            verticalArrangement = Arrangement.Center
     ) {
         Box(
-            modifier = Modifier.background(Color.Black)
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.Center
         ){
             ImagemLogo(
                 modifier = Modifier
-                    .size(60.dp),
-                color = Color.Black
+                    .fillMaxWidth()
+                    .padding(20.dp)
             )
         }
         Text (
             modifier = Modifier
-                .background(Color.Black),
+                .fillMaxWidth()
+                .padding(30.dp),
 
-            textAlign = TextAlign.Start,
+
+            textAlign = TextAlign.Center,
             text = "QUIZATRON 3000",
-            color = Color.White,
+            color = Color.Black,
             fontFamily = FontFamily.Monospace,
 
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Yellow
-            ),
-            modifier = Modifier
+        Box(
+            modifier = Modifier.fillMaxWidth().padding(30.dp)
         ) {
-            Text(
-                text = "Começar!!",
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,
-                color = Color.Blue
-            )
+            Button(
+                modifier = Modifier.align(Alignment.BottomCenter),
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Yellow,
+
+                )
+            ) {
+                Text(
+                    text = "Começar!!",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 24.sp,
+                    color = Color.Black
+                )
+            }
         }
+
     }
 }
 
 @Composable
-fun ImagemLogo(modifier: Modifier = Modifier, color: Color) {
+fun ImagemLogo(modifier: Modifier = Modifier) {
     Image(
         contentDescription = "LogoImage",
         painter = painterResource(R.drawable.quiz),
-        modifier = modifier,
-        colorFilter = ColorFilter.tint(color)
+        modifier = modifier
     )
 }
