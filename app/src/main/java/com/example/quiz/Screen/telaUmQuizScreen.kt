@@ -1,0 +1,305 @@
+package com.example.quiz.Screen
+
+import android.R
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+
+@Composable
+fun telaUmScreen(modifier: Modifier = Modifier, navController: NavController) {
+
+    val alternativas = listOf("10 anos", "20 anos", "menos de 1 dia", "1 ano")
+    val respostaCorreta = 0
+
+    var selecionada by remember { mutableStateOf<Int?>(null) }
+
+
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFE98CB5)),
+
+    ) {
+        Box(
+            modifier = Modifier.fillMaxWidth().padding(40.dp)
+        ) {
+            ImagemLogo(
+                modifier = Modifier.align(Alignment.TopCenter)
+                    .fillMaxWidth()
+                    .height(150.dp)
+                    .width(150.dp)
+                    .padding(top = 60.dp)
+
+            )
+        }
+        Box(
+            modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(230.dp)
+                    .background(Color.Yellow, shape = RoundedCornerShape(16.dp))
+                    .border(2.dp, Color.Black, shape = RoundedCornerShape(16.dp))
+                    .height(50.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    modifier = Modifier.align(Alignment.Center),
+                    text = "Pergunta 1 de 4",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+
+                    )
+            }
+        }
+
+        Box(
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.Center
+        ) {
+            Card(
+                modifier = Modifier
+                    .height(400.dp)
+                    .width(350.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorResource(R.color.white)
+                )
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp),
+                    contentAlignment = Alignment.TopCenter
+                ){
+                    Text(
+                        modifier = Modifier.align(Alignment.Center),
+                        text = "Quantos anos vive uma borboleta? (média)",
+                        textAlign = TextAlign.Center,
+                        fontSize = 20.sp,
+                        fontWeight =  FontWeight.SemiBold,
+                        color = Color.Black
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+
+                        .fillMaxWidth()
+                        .height(70.dp),
+
+                ) {
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "10 anos",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
+                    }
+
+                }
+                Box(
+                    modifier = Modifier
+
+                        .fillMaxWidth()
+                        .height(70.dp)
+
+                ) {
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "20 anos",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
+                    }
+
+                }
+                Box(
+                    modifier = Modifier
+
+                        .fillMaxWidth()
+                        .height(70.dp)
+
+                ) {
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+//                                    navController.navigate("")
+                                    selecionada = respostaCorreta
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "menos de 1 dia",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
+                    }
+
+                }
+                Box(
+                    modifier = Modifier
+
+                        .fillMaxWidth()
+                        .height(70.dp)
+
+                ) {
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "1 ano",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}
+

@@ -1,4 +1,4 @@
-package com.example.quiz.ui.theme
+package com.example.quiz.Screen
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.example.quiz.ui.theme
+package com.example.quiz.Screen
 
 import android.R
 import androidx.compose.foundation.BorderStroke
@@ -26,10 +26,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.quiz.ImagemLogo
+import androidx.navigation.NavController
 
 @Composable
-fun telaDoisScreen(modifier: Modifier = Modifier) {
+fun telaDoisScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     Column(
         modifier = Modifier
@@ -165,7 +165,7 @@ fun telaDoisScreen(modifier: Modifier = Modifier) {
                         modifier = Modifier.align(Alignment.Center)
                             .width(330.dp)
                             .height(50.dp),
-                        onClick = {},
+                        onClick = {navController.navigate("TelaTres")},
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.White
                         ),
@@ -224,7 +224,7 @@ fun telaDoisScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier.align(Alignment.Center)
                     .width(330.dp)
                     .height(50.dp),
-                onClick = {},
+                onClick = {navController.navigate("TelaUm")},
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Green
                 ),

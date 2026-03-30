@@ -1,6 +1,7 @@
-package com.example.quiz.ui.theme
+package com.example.quiz.Screen
 
 import android.R
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -17,12 +20,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.quiz.ImagemLogo
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun telaFinalScreen(modifier: Modifier = Modifier) {
+fun telaFinalScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     val Cor = Color(98,219,251,255)
 
@@ -50,11 +55,13 @@ fun telaFinalScreen(modifier: Modifier = Modifier) {
             ) {
                 Card(
                     modifier= Modifier
-                        .width(200.dp)
-                        .height(60.dp),
+                        .width(300.dp)
+                        .height(100.dp)
+                        .padding(top = 20.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = colorResource(R.color.white)
-                    )
+                        containerColor =    Color(0xFF5FDA86)
+                    ),
+                    border = BorderStroke(2.dp, Color.Black)
                 ) {
                     Box(
                         modifier = Modifier.fillMaxWidth()
@@ -64,13 +71,49 @@ fun telaFinalScreen(modifier: Modifier = Modifier) {
                         Text(
                             text = "Bom trabalho!",
                             textAlign = TextAlign.Center,
+                            fontSize = 24.sp
                         )
                     }
 
                 }
 
             }
+            Box(
+                modifier = Modifier.fillMaxWidth().height(80.dp).align(Alignment.BottomCenter)
+            ) {
+                Text(
+                    modifier = Modifier.align(Alignment.Center),
+                    text = "Voce acertou $()",
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
 
         }
+        Box(
+            modifier = Modifier.fillMaxWidth().height(100.dp)
+        ) {
+            Button(
+                modifier = Modifier.align(Alignment.Center)
+                    .width(330.dp)
+                    .height(50.dp)
+                    .padding(bottom = 10.dp),
+                onClick = {navController.navigate("TelaInicio")},
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Yellow
+                ),
+                border = BorderStroke(2.dp, Color.Black)
+            ) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Jogar Novamente",
+                    fontSize = 20.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+
     }
 }

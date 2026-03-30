@@ -1,4 +1,4 @@
-package com.example.quiz.ui.theme
+package com.example.quiz.Screen
 
 
 
@@ -28,10 +28,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.quiz.ImagemLogo
+import androidx.navigation.NavController
 
 @Composable
-fun telaQuatroScreen(modifier: Modifier = Modifier) {
+fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     Column(
         modifier = Modifier
@@ -64,7 +64,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
             ) {
                 Text(
                     modifier = Modifier.align(Alignment.Center),
-                    text = "Pergunta 4 de 4",
+                    text = "Pergunta 3 de 4",
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
 
@@ -92,7 +92,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
                 ){
                     Text(
                         modifier = Modifier.align(Alignment.Center),
-                        text = "Qual o inceto mais veloz do mundo?",
+                        text = "Qual o coletivo de Borboleta?",
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
                         fontWeight =  FontWeight.SemiBold,
@@ -119,7 +119,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
                     ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Libélula",
+                            text = "Borboletas",
                             fontSize = 20.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.SemiBold,
@@ -147,7 +147,35 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
                     ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Aranha-Armadeira",
+                            text = "Enxame",
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.SemiBold,
+                            textAlign = TextAlign.Start
+                        )
+                    }
+
+                }
+                Box(
+                    modifier = Modifier
+
+                        .fillMaxWidth()
+                        .height(70.dp)
+
+                ) {
+                    Button(
+                        modifier = Modifier.align(Alignment.Center)
+                            .width(330.dp)
+                            .height(50.dp),
+                        onClick = {navController.navigate("TelaQuatro")},
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.White
+                        ),
+                        border = BorderStroke(2.dp, Color.Black)
+                    ) {
+                        Text(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Panapaná",
                             fontSize = 20.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.SemiBold,
@@ -175,35 +203,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
                     ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
-                            text = "Besouro-Tigre",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
-                    }
-
-                }
-                Box(
-                    modifier = Modifier
-
-                        .fillMaxWidth()
-                        .height(70.dp)
-
-                ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Abelha",
+                            text = "Carreiro",
                             fontSize = 20.sp,
                             color = Color.Black,
                             fontWeight = FontWeight.SemiBold,
@@ -214,9 +214,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
                 }
 
             }
-
         }
-
         Box(
             modifier = Modifier
 
@@ -228,7 +226,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier.align(Alignment.Center)
                     .width(330.dp)
                     .height(50.dp),
-                onClick = {},
+                onClick = {navController.navigate("TelaDois")},
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Green
                 ),
