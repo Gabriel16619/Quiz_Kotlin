@@ -215,7 +215,7 @@ fun telaUmScreen(modifier: Modifier = Modifier, navController: NavController) {
                         val corBorda = when {
                             selecionada == null -> Color.Black
                             index == respostaCorreta -> Color.Green
-                            else -> Color.Red
+                            else -> Color.Green
                         }
 
                         Box(
@@ -229,7 +229,7 @@ fun telaUmScreen(modifier: Modifier = Modifier, navController: NavController) {
                                     .width(330.dp)
                                     .height(50.dp),
                                 onClick = {
-//                                    navController.navigate("")
+                                    navController.navigate("TelaDois")
                                     selecionada = respostaCorreta
                                 },
                                 colors = ButtonDefaults.buttonColors(
