@@ -48,10 +48,13 @@ fun telaDoisScreen(modifier: Modifier = Modifier, navController: NavController) 
 
         ) {
         Box(
-            modifier = Modifier.fillMaxWidth().padding(40.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(40.dp)
         ) {
             ImagemLogo(
-                modifier = Modifier.align(Alignment.TopCenter)
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
                     .fillMaxWidth()
                     .height(150.dp)
                     .width(150.dp)
@@ -60,7 +63,9 @@ fun telaDoisScreen(modifier: Modifier = Modifier, navController: NavController) 
             )
         }
         Box(
-            modifier = Modifier.fillMaxWidth().height(100.dp), contentAlignment = Alignment.Center
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp), contentAlignment = Alignment.Center
         ) {
             Box(
                 modifier = Modifier
@@ -97,13 +102,13 @@ fun telaDoisScreen(modifier: Modifier = Modifier, navController: NavController) 
                         .fillMaxWidth()
                         .height(100.dp),
                     contentAlignment = Alignment.TopCenter
-                ){
+                ) {
                     Text(
                         modifier = Modifier.align(Alignment.Center),
                         text = "Quantas patas tem uma Aranha?",
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
-                        fontWeight =  FontWeight.SemiBold,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black
                     )
                 }
@@ -153,175 +158,184 @@ fun telaDoisScreen(modifier: Modifier = Modifier, navController: NavController) 
                             }
                         }
 
-                }
-                Box(
-                    modifier = Modifier
+                    }
+                    Box(
+                        modifier = Modifier
 
-                        .fillMaxWidth()
-                        .height(70.dp)
+                            .fillMaxWidth()
+                            .height(70.dp)
 
-                ) {
-                    alternativas.forEachIndexed { index, texto ->
+                    ) {
+                        alternativas.forEachIndexed { index, texto ->
 
-                        val corBorda = when {
-                            selecionada == null -> Color.Black
-                            index == respostaCorreta -> Color.Green
-                            else -> Color.Red
-                        }
-
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(70.dp)
-                        ) {
-                            Button(
-                                modifier = Modifier
-                                    .align(Alignment.Center)
-                                    .width(330.dp)
-                                    .height(50.dp),
-                                onClick = {
-                                    navController.navigate("TelaDois")
-                                    selecionada = respostaCorreta
-                                },
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color.White
-                                ),
-                                border = BorderStroke(2.dp, corBorda)
-                            ) {
-                                Text(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    text = "28897",
-                                    fontSize = 20.sp,
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.SemiBold,
-                                    textAlign = TextAlign.Start
-                                )
+                            val corBorda = when {
+                                selecionada == null -> Color.Black
+                                index == respostaCorreta -> Color.Green
+                                else -> Color.Red
                             }
 
-                        }
-                        Box(
-                            modifier = Modifier
-
-                                .fillMaxWidth()
-                                .height(70.dp)
-
-                        ) {
-                            alternativas.forEachIndexed { index, texto ->
-
-                                val corBorda = when {
-                                    selecionada == null -> Color.Black
-                                    index == respostaCorreta -> Color.Green
-                                    else -> Color.Green
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(70.dp)
+                            ) {
+                                Button(
+                                    modifier = Modifier
+                                        .align(Alignment.Center)
+                                        .width(330.dp)
+                                        .height(50.dp),
+                                    onClick = {
+                                        navController.navigate("TelaDois")
+                                        selecionada = respostaCorreta
+                                    },
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White
+                                    ),
+                                    border = BorderStroke(2.dp, corBorda)
+                                ) {
+                                    Text(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        text = "28897",
+                                        fontSize = 20.sp,
+                                        color = Color.Black,
+                                        fontWeight = FontWeight.SemiBold,
+                                        textAlign = TextAlign.Start
+                                    )
                                 }
 
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(70.dp)
-                                ) {
-                                    Button(
-                                        modifier = Modifier
-                                            .align(Alignment.Center)
-                                            .width(330.dp)
-                                            .height(50.dp),
-                                        onClick = {
-                                            navController.navigate("TelaTres")
-                                            selecionada = respostaCorreta
-                                        },
-                                        colors = ButtonDefaults.buttonColors(
-                                            containerColor = Color.White
-                                        ),
-                                        border = BorderStroke(2.dp, corBorda)
-                                    ) {
-                                        Text(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            text = "8",
-                                            fontSize = 20.sp,
-                                            color = Color.Black,
-                                            fontWeight = FontWeight.SemiBold,
-                                            textAlign = TextAlign.Start
-                                        )
+                            }
+                            Box(
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .height(70.dp)
+
+                            ) {
+                                alternativas.forEachIndexed { index, texto ->
+
+                                    val corBorda = when {
+                                        selecionada == null -> Color.Black
+                                        index == respostaCorreta -> Color.Green
+                                        else -> Color.Green
                                     }
 
-                                }
-                                Box(
-                                    modifier = Modifier
-
-                                        .fillMaxWidth()
-                                        .height(70.dp)
-
-                                ) {
-                                    alternativas.forEachIndexed { index, texto ->
-
-                                        val corBorda = when {
-                                            selecionada == null -> Color.Black
-                                            index == respostaCorreta -> Color.Green
-                                            else -> Color.Red
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(70.dp)
+                                    ) {
+                                        Button(
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .width(330.dp)
+                                                .height(50.dp),
+                                            onClick = {
+                                                navController.navigate("TelaTres")
+                                                selecionada = respostaCorreta
+                                            },
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = Color.White
+                                            ),
+                                            border = BorderStroke(2.dp, corBorda)
+                                        ) {
+                                            Text(
+                                                modifier = Modifier.fillMaxWidth(),
+                                                text = "8",
+                                                fontSize = 20.sp,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.SemiBold,
+                                                textAlign = TextAlign.Start
+                                            )
                                         }
 
-                                        Box(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .height(70.dp)
-                                        ) {
-                                            Button(
+                                    }
+                                    Box(
+                                        modifier = Modifier
+
+                                            .fillMaxWidth()
+                                            .height(70.dp)
+
+                                    ) {
+                                        alternativas.forEachIndexed { index, texto ->
+
+                                            val corBorda = when {
+                                                selecionada == null -> Color.Black
+                                                index == respostaCorreta -> Color.Green
+                                                else -> Color.Red
+                                            }
+
+                                            Box(
                                                 modifier = Modifier
-                                                    .align(Alignment.Center)
-                                                    .width(330.dp)
-                                                    .height(50.dp),
-                                                onClick = {
-                                                    navController.navigate("TelaDois")
-                                                    selecionada = respostaCorreta
-                                                },
-                                                colors = ButtonDefaults.buttonColors(
-                                                    containerColor = Color.White
-                                                ),
-                                                border = BorderStroke(2.dp, corBorda)
+                                                    .fillMaxWidth()
+                                                    .height(70.dp)
                                             ) {
-                                                Text(
-                                                    modifier = Modifier.fillMaxWidth(),
-                                                    text = "4",
-                                                    fontSize = 20.sp,
-                                                    color = Color.Black,
-                                                    fontWeight = FontWeight.SemiBold,
-                                                    textAlign = TextAlign.Start
-                                                )
+                                                Button(
+                                                    modifier = Modifier
+                                                        .align(Alignment.Center)
+                                                        .width(330.dp)
+                                                        .height(50.dp),
+                                                    onClick = {
+                                                        navController.navigate("TelaDois")
+                                                        selecionada = respostaCorreta
+                                                    },
+                                                    colors = ButtonDefaults.buttonColors(
+                                                        containerColor = Color.White
+                                                    ),
+                                                    border = BorderStroke(2.dp, corBorda)
+                                                ) {
+                                                    Text(
+                                                        modifier = Modifier.fillMaxWidth(),
+                                                        text = "4",
+                                                        fontSize = 20.sp,
+                                                        color = Color.Black,
+                                                        fontWeight = FontWeight.SemiBold,
+                                                        textAlign = TextAlign.Start
+                                                    )
+                                                }
+
                                             }
 
                                         }
-
                                     }
-                                }
-                                Box(
-                                    modifier = Modifier
+                                    Box(
+                                        modifier = Modifier
 
-                                        .fillMaxWidth()
-                                        .height(70.dp)
+                                            .fillMaxWidth()
+                                            .height(70.dp)
 
-                                ) {
-                                    Button(
-                                        modifier = Modifier.align(Alignment.Center)
-                                            .width(330.dp)
-                                            .height(50.dp),
-                                        onClick = { navController.navigate("TelaUm") },
-                                        colors = ButtonDefaults.buttonColors(
-                                            containerColor = Color.Green
-                                        ),
-                                        border = BorderStroke(2.dp, Color.Black)
                                     ) {
-                                        Text(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            text = "Voltar para Anterior",
-                                            fontSize = 20.sp,
-                                            color = Color.Black,
-                                            fontWeight = FontWeight.SemiBold,
-                                            textAlign = TextAlign.Center
-                                        )
+                                        Button(
+                                            modifier = Modifier
+                                                .align(Alignment.Center)
+                                                .width(330.dp)
+                                                .height(50.dp),
+                                            onClick = { navController.navigate("TelaUm") },
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = Color.Green
+                                            ),
+                                            border = BorderStroke(2.dp, Color.Black)
+                                        ) {
+                                            Text(
+                                                modifier = Modifier.fillMaxWidth(),
+                                                text = "Voltar para Anterior",
+                                                fontSize = 20.sp,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.SemiBold,
+                                                textAlign = TextAlign.Center
+                                            )
+                                        }
+
                                     }
 
                                 }
-
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
