@@ -1,7 +1,5 @@
 package com.example.quiz.Screen
 
-
-
 import android.R
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -20,6 +18,11 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,9 +32,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 @Composable
 fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) {
+
+    val alternativas = listOf("Bando", "Panapaná", "Alcateia", "Cardume")
+    val respostaCorreta = 0
+
+    var selecionada by remember { mutableStateOf<Int?>(null) }
+
+
 
     Column(
         modifier = Modifier
@@ -92,7 +103,7 @@ fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) 
                 ){
                     Text(
                         modifier = Modifier.align(Alignment.Center),
-                        text = "Qual o coletivo de Borboleta?",
+                        text = "Qual o coletivo de Borboletas?",
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
                         fontWeight =  FontWeight.SemiBold,
@@ -107,24 +118,42 @@ fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) 
                         .height(70.dp),
 
                     ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Borboletas",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Bando",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -135,24 +164,43 @@ fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) 
                         .height(70.dp)
 
                 ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Enxame",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Green
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    navController.navigate("TelaQuatro")
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Panapaná",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -163,24 +211,42 @@ fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) 
                         .height(70.dp)
 
                 ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {navController.navigate("TelaQuatro")},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Panapaná",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = respostaCorreta
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Alcateia",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -191,29 +257,48 @@ fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) 
                         .height(70.dp)
 
                 ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Carreiro",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Cardume",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
 
             }
+
         }
         Box(
             modifier = Modifier
@@ -226,7 +311,9 @@ fun telaTresScreen(modifier: Modifier = Modifier, navController: NavController) 
                 modifier = Modifier.align(Alignment.Center)
                     .width(330.dp)
                     .height(50.dp),
-                onClick = {navController.navigate("TelaDois")},
+                onClick = {
+                    navController.navigate("TelaDois")
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Green
                 ),

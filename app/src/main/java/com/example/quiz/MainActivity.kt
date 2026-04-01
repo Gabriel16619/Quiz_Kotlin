@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -29,13 +30,14 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     val navController = rememberNavController()
+                    val viewModel: QuizViewModel = viewModel()
 
                     NavHost(
                         navController = navController,
                         startDestination = "TelaInicio"
                     ) {
                         composable(route = "TelaInicio") {
-                            telaInicio(modifier = Modifier.padding(innerPadding), navController)
+                            telaInicio(modifier = Modifier.padding(innerPadding), navController, viewModel)
                         }
 
                         composable(route = "TelaUm") {
@@ -57,6 +59,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = "TelaFinal") {
                             telaFinalScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
+
                     }
                 }
             }

@@ -298,7 +298,39 @@ fun telaUmScreen(modifier: Modifier = Modifier, navController: NavController) {
                 }
 
             }
+
         }
+        Box(
+            modifier = Modifier
+
+                .fillMaxWidth()
+                .height(70.dp)
+
+        ) {
+            Button(
+                modifier = Modifier.align(Alignment.Center)
+                    .width(330.dp)
+                    .height(50.dp),
+                onClick = {
+                    navController.navigate("TelaInicio")
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Green
+                ),
+                border = BorderStroke(2.dp, Color.Black)
+            ) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Voltar para Anterior",
+                    fontSize = 20.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+        }
+
 
     }
 }

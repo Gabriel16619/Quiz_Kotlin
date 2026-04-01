@@ -1,7 +1,5 @@
 package com.example.quiz.Screen
 
-
-
 import android.R
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -20,6 +18,11 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,9 +32,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 @Composable
 fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController) {
+
+    val alternativas = listOf("Bando", "Panapaná", "Alcateia", "Cardume")
+    val respostaCorreta = 0
+
+    var selecionada by remember { mutableStateOf<Int?>(null) }
+
 
 
     Column(
@@ -93,7 +103,7 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
                 ){
                     Text(
                         modifier = Modifier.align(Alignment.Center),
-                        text = "Qual o inceto mais veloz do mundo?",
+                        text = "Qual o inseto mais rápido do mundo?",
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp,
                         fontWeight =  FontWeight.SemiBold,
@@ -108,24 +118,42 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
                         .height(70.dp),
 
                     ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Libélula",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Gafanhoto",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -136,24 +164,43 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
                         .height(70.dp)
 
                 ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Aranha-Armadeira",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Grilo",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -164,24 +211,42 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
                         .height(70.dp)
 
                 ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {navController.navigate("TelaFinal")},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Besouro-Tigre",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Red
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    selecionada = respostaCorreta
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Besouro-Rinoceronte",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -192,24 +257,43 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
                         .height(70.dp)
 
                 ) {
-                    Button(
-                        modifier = Modifier.align(Alignment.Center)
-                            .width(330.dp)
-                            .height(50.dp),
-                        onClick = {},
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
-                        ),
-                        border = BorderStroke(2.dp, Color.Black)
-                    ) {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = "Abelha",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            fontWeight = FontWeight.SemiBold,
-                            textAlign = TextAlign.Start
-                        )
+                    alternativas.forEachIndexed { index, texto ->
+
+                        val corBorda = when {
+                            selecionada == null -> Color.Black
+                            index == respostaCorreta -> Color.Green
+                            else -> Color.Green
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(70.dp)
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .width(330.dp)
+                                    .height(50.dp),
+                                onClick = {
+                                    navController.navigate("TelaFinal")
+                                    selecionada = index
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White
+                                ),
+                                border = BorderStroke(2.dp, corBorda)
+                            ) {
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    text = "Besouro-Tigre",
+                                    fontSize = 20.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.SemiBold,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                        }
                     }
 
                 }
@@ -217,7 +301,6 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
             }
 
         }
-
         Box(
             modifier = Modifier
 
@@ -229,7 +312,9 @@ fun telaQuatroScreen(modifier: Modifier = Modifier, navController: NavController
                 modifier = Modifier.align(Alignment.Center)
                     .width(330.dp)
                     .height(50.dp),
-                onClick = {navController.navigate("TelaTres")},
+                onClick = {
+                    navController.navigate("TelaTres")
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Green
                 ),
